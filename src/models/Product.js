@@ -1,6 +1,6 @@
 const { DataTypes } = require("sequelize");
 
-module.exports = (sequelize) => {
+const ProductFunc = (sequelize) => {
   sequelize.define(
     "Product",
     {
@@ -51,3 +51,5 @@ module.exports = (sequelize) => {
     }
   );
 };
+
+module.exports = ProductFunc;

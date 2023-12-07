@@ -1,34 +1,35 @@
-const {DataTypes} = require('sequelize');
-module.exports = (sequelize)=>{
+const { DataTypes } = require('sequelize');
+
+const UserFunc = (sequelize) => {
     sequelize.define('User', {
-        id:{
+        id: {
             type: DataTypes.UUID,
             defaultValue: DataTypes.UUIDV4,
             primaryKey: true,
         },
-        name:{
+        name: {
             type: DataTypes.STRING(50),
             allowNull: false,
-            set(value){
+            set(value) {
                 this.setDataValue("name", value.toLowerCase());
             }
         },
-        lastName:{
+        lastName: {
             type: DataTypes.STRING(50),
             allowNull: false,
-            set(value){
+            set(value) {
                 this.setDataValue("lastName", value.toLowerCase());
             }
         },
-        adress:{
+        adress: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        mail:{
+        mail: {
             type: DataTypes.STRING,
             allowNull: false,
             unique: true,
-            set(value){
+            set(value) {
                 this.setDataValue("mail", value.toLowerCase());
             },
             validate: {
@@ -40,5 +41,7 @@ module.exports = (sequelize)=>{
             allowNull: false,
         },
 
-    }, {timestamps: false});
-}
+    }, { timestamps: false });
+};
+
+module.exports = UserFunc;

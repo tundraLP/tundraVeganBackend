@@ -2,10 +2,9 @@ require("dotenv").config();
 const { Sequelize } = require('sequelize');
 const { DB_USER, DB_PASS, DB_PORT, DB_NAME } = process.env;
 
-const UsersModel = require("./models/User");
-const ProductModel = require("./models/Product");
-const OrderModel = require("./models/Order");
-
+const UserFunc = require("./models/User");
+const ProductFunc = require("./models/Product");
+const OrderFunc = require("./models/Order");
 
 const sequelize = new Sequelize(
     `postgres://${DB_USER}:${DB_PASS}@${DB_PORT}/${DB_NAME}`,
@@ -24,10 +23,11 @@ const connectToDataBase = async () => {
 
 connectToDataBase();
 
+// sincornizacion de modelos
 
-UsersModel(sequelize);
-ProductModel(sequelize);
-OrderModel(sequelize);
+UserFunc(sequelize);
+ProductFunc(sequelize);
+OrderFunc(sequelize);
 
 const { User, Order, Product } = sequelize.models;
 
