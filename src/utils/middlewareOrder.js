@@ -31,18 +31,10 @@ const validateTotalOrderPost = (req, res, next) => {
     next();
 };
 
-const validateDateOrderPost = (req, res, next) => {
-    const { date } = req.body;
-
-    if (!date) throw Error('Por favor envie la fecha del pedido');
-
-    next();
-};
-
 const validateDeletedOrderPost = (req, res, next) => {
     const { deleted } = req.body;
 
-    if (!deleted) throw Error('Por favor envie el dato eliminado');
+    if (deleted == undefined) throw Error('Por favor envie el dato eliminado');
 
     if (typeof deleted !== "boolean") throw Error('Por favor envie el tipo de dato correcto.');
 
@@ -78,7 +70,6 @@ module.exports = {
     validateAdressOrderPost,
     validateProductsOrderPost,
     validateTotalOrderPost,
-    validateDateOrderPost,
     validateDeletedOrderPost,
     validateUserIdGet,
     validateUserIdPost,

@@ -26,10 +26,6 @@ const OrderFunc = (sequelize) => {
         type: DataTypes.DECIMAL(10, 2),
         allowNull: false,
       },
-      date: {
-        type: DataTypes.DATEONLY,
-        allowNull: false,
-      },
       deleted: {
         type: DataTypes.BOOLEAN,
         allowNull: false,

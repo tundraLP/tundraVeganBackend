@@ -12,7 +12,6 @@ const {
     validateAdressOrderPost,
     validateProductsOrderPost,
     validateTotalOrderPost,
-    validateDateOrderPost,
     validateDeletedOrderPost,
     validateUserIdPost,
     validateIdPost
@@ -20,7 +19,7 @@ const {
 
 orderRouter.get('/getAllOrders', getAllOrderHandler);
 orderRouter.get('/getOrdersById', validateUserIdGet, getOrdersByIdHandler);
-orderRouter.post('/createOrder', [validateStateOrderPost, validateAdressOrderPost, validateProductsOrderPost, validateTotalOrderPost, validateDateOrderPost, validateDeletedOrderPost, validateUserIdPost], createOrderHandler);
+orderRouter.post('/createOrder', [validateStateOrderPost, validateAdressOrderPost, validateProductsOrderPost, validateTotalOrderPost, validateDeletedOrderPost, validateUserIdPost], createOrderHandler);
 orderRouter.delete('/deleteOrder', [validateUserIdPost, validateIdPost], deleteOrderHandler);
 
 module.exports = orderRouter;
