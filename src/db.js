@@ -32,9 +32,9 @@ OrderFunc(sequelize);
 const { User, Order, Product } = sequelize.models;
 
 User.hasMany(Order, { timeStamps: false });
-Product.hasMany(Order, { timeStamps: false });
 Order.belongsTo(User, { timeStamps: false });
-Order.hasMany(Product, { timeStamps: false });
+
+
 
 module.exports = {
     sequelize,
