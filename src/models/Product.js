@@ -7,9 +7,9 @@ const ProductFunc = (sequelize) => {
     "Product",
     {
       id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
+        type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV4,
+            primaryKey: true,
       },
       name: {
         type: DataTypes.STRING,
@@ -48,6 +48,7 @@ const ProductFunc = (sequelize) => {
       },
     },
     {
+      timeStamps:false,
       sequelize,
       modelName: "Product",
       tableName: "Products", // Agrega esta propiedad

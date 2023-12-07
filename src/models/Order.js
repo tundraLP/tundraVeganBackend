@@ -37,6 +37,7 @@ const OrderFunc = (sequelize) => {
       },
     },
     {
+      timeStamps:false,
       sequelize,
       modelName: "Order",
       tableName: "Orders", // Agrega esta propiedad
