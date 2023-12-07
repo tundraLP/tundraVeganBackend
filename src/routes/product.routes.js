@@ -14,7 +14,8 @@ const {
     validateStockProductPost,
     validateImageProductPost,
     validateDeletedProductPost,
-    validateProductIdPost
+    validateProductIdPost,
+    validateProductImagePost
 } = require('../utils/middlewareProduct');
 
 productRouter.get('/getProducts', getProductHandler);
@@ -27,7 +28,8 @@ productRouter.post('/createProduct', [
     validatePriceProductPost,
     validateStockProductPost,
     validateImageProductPost,
-    validateDeletedProductPost
+    validateDeletedProductPost,
+    validateProductImagePost
 ], createProductHandler);
 
 productRouter.put('/updateProduct', [
@@ -38,6 +40,7 @@ productRouter.put('/updateProduct', [
     validateStockProductPost,
     validateImageProductPost,
     validateDeletedProductPost,
+    validateProductImagePost,
     validateProductIdPost
 ], updateProductHandler);
 

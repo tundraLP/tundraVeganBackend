@@ -60,9 +60,9 @@ const validateImageProductPost = (req, res, next) => {
 const validateDeletedProductPost = (req, res, next) => {
     const { deleted } = req.body;
 
-    if (!deleted) throw Error('Por favor envie el campo eliminado.');
+    if (deleted == undefined) throw Error('Por favor envie el campo eliminado.');
 
-    if (typeof deleted !== 'boolean') throw Error('Por favor envie el campo eliminado.');
+    if (typeof deleted !== 'boolean') throw Error('Por favor envie el campo eliminado typeof.');
 
     next();
 };
@@ -75,6 +75,14 @@ const validateProductIdPost = (req, res, next) => {
     next();
 };
 
+const validateProductImagePost = (req, res, next) => {
+    const { image } = req.body;
+
+    if (!image) throw Error('Por favor envie la imagen.');
+
+    next();
+}
+
 module.exports = {
     validateNameProductPost,
     validateTypeProductPost,
@@ -83,5 +91,6 @@ module.exports = {
     validateStockProductPost,
     validateImageProductPost,
     validateDeletedProductPost,
+    validateProductImagePost,
     validateProductIdPost
 };
