@@ -1,7 +1,15 @@
+
+require("dotenv").config();
 const { Sequelize } = require('sequelize');
 const { DB_USER, DB_PASS, DB_PORT, DB_NAME } = process.env;
 
-const db = new Sequelize(
+const UsersModel = require("./models/User");
+const ProductModel = require("./models/Product");
+const OrderModel = require("./models/Order");
+
+
+
+const sequelize = new Sequelize(
     `postgres://${DB_USER}:${DB_PASS}@${DB_PORT}/${DB_NAME}`,
     { logging: false }
 );
@@ -16,9 +24,25 @@ const connectToDatabase = async () => {
     };
 };
 
-connectToDatabase();
+connectToDataBase();
+
+
+UsersModel(sequelize)
+ProductModel(sequelize)
+OrderModel(sequelize)
+
+const {User, Order, Product} = sequelize.models;
+
+User.hasMany(Order, {timeStamps: false });
+Product.hasMany(Order, {timeStamps: false });
+Order.belongsTo(User, {timeStamps: false });
+Order.hasMany(Product, {timeStamps: false });
+
+
+
 
 module.exports = {
-    db,
-    ...db.models
-};
+    ...sequelize.models,
+    sequelize
+}
+
