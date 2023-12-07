@@ -1,6 +1,6 @@
 const { DataTypes } = require("sequelize");
 
-module.exports = (sequelize) => {
+const OrderFunc = (sequelize) => {
   sequelize.define(
     "Order",
     {
@@ -9,7 +9,6 @@ module.exports = (sequelize) => {
         defaultValue: DataTypes.UUIDV4,
         primaryKey: true,
       },
-
       state: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -23,8 +22,7 @@ module.exports = (sequelize) => {
         type: DataTypes.ARRAY(DataTypes.UUID),
         allowNull: false,
       },
-
-      import: {
+      total: {
         type: DataTypes.DECIMAL(10, 2),
         allowNull: false,
       },
@@ -46,3 +44,5 @@ module.exports = (sequelize) => {
     }
   );
 };
+
+module.exports = OrderFunc;
