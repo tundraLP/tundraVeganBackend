@@ -14,7 +14,8 @@ const {
     validateStockProductPost,
     validateImageProductPost,
     validateDeletedProductPost,
-    validateProductIdPost
+    validateProductIdPost,
+    validateProductBoolean
 } = require('../utils/middlewareProduct');
 
 productRouter.get('/getProducts', getProductHandler);
@@ -41,6 +42,6 @@ productRouter.put('/updateProduct', [
     validateProductIdPost
 ], updateProductHandler);
 
-productRouter.delete('/deleteProduct', validateProductIdPost, deleteProductHandler);
+productRouter.put('/deleteProduct', [validateProductIdPost, validateProductBoolean], deleteProductHandler);
 
 module.exports = productRouter;

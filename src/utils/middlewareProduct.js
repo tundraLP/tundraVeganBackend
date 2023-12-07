@@ -75,6 +75,14 @@ const validateProductIdPost = (req, res, next) => {
     next();
 };
 
+const validateProductBoolean = (req, res, next) => {
+    const { boolean } = req.body;
+
+    if (!boolean) throw Error('Por favor envie el nuevo estado del producto.');
+
+    next();
+}
+
 module.exports = {
     validateNameProductPost,
     validateTypeProductPost,
@@ -83,5 +91,6 @@ module.exports = {
     validateStockProductPost,
     validateImageProductPost,
     validateDeletedProductPost,
-    validateProductIdPost
+    validateProductIdPost,
+    validateProductBoolean
 };

@@ -1,13 +1,9 @@
 const { Product } = require('../../db');
 
-const deleteProduct = async (ProductId) => {
-    const product = await Product.findOne({ where: { ProductId } });
+const deleteProduct = async (ProductId, boolean) => {
+    const product = await Product.update({ boolean }, { where: { ProductId } });
 
-    if (!product) throw Error('Por favor envie un ID de producto válido.');
-    
-    const aux = product;
-    product.destroy();
-    return aux;
+    return product;
 };
 
 module.exports = deleteProduct;
