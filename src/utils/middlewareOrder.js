@@ -57,6 +57,22 @@ const validateUserIdGet = (req, res, next) => {
     next();
 };
 
+const validateUserIdPost = (req, res, next) => {
+    const { UserId } = req.body;
+
+    if (!UserId) throw Error('Por favor enviar el ID de usuario.');
+
+    next();
+};
+
+const validateIdPost = (req, res, next) => {
+    const { id } = req.body;
+
+    if (!id) throw Error('Por favor enviar el ID de la orden.');
+
+    next();
+};
+
 module.exports = {
     validateStateOrderPost,
     validateAdressOrderPost,
@@ -64,5 +80,7 @@ module.exports = {
     validateTotalOrderPost,
     validateDateOrderPost,
     validateDeletedOrderPost,
-    validateUserIdGet
+    validateUserIdGet,
+    validateUserIdPost,
+    validateIdPost
 };
