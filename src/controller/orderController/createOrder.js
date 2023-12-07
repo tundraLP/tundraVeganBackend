@@ -1,8 +1,8 @@
 const { Order } = require('../../db');
 
-const createOrder = async (state, adress, products, total, date, deleted, UserId) => {
+const createOrder = async (state, adress, products, total, deleted, UserId) => {
 
-    const order = await Order.create({ state, adress, products, total, date, deleted });
+    const order = await Order.create({ state, adress, products, total, deleted });
 
     await order.setUser(UserId);
 
