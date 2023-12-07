@@ -16,7 +16,7 @@ const sequelize = new Sequelize(
 
 const connectToDataBase = async () => {
     try {
-        await db.authenticate();
+        await sequelize.authenticate();
     } catch (error) {
         console.error('Error al conectar la base de datos', error)
     };
@@ -29,14 +29,14 @@ UsersModel(sequelize);
 ProductModel(sequelize);
 OrderModel(sequelize);
 
-const {User, Order, Product} = sequelize.models;
+const { User, Order, Product } = sequelize.models;
 
-User.hasMany(Order, {timeStamps: false });
-Product.hasMany(Order, {timeStamps: false });
-Order.belongsTo(User, {timeStamps: false });
-Order.hasMany(Product, {timeStamps: false });
+User.hasMany(Order, { timeStamps: false });
+Product.hasMany(Order, { timeStamps: false });
+Order.belongsTo(User, { timeStamps: false });
+Order.hasMany(Product, { timeStamps: false });
 
 module.exports = {
-    ...sequelize.models,
-    sequelize
+    sequelize,
+    ...sequelize.models
 };
