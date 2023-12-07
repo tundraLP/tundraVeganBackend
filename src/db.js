@@ -1,4 +1,3 @@
-
 require("dotenv").config();
 const { Sequelize } = require('sequelize');
 const { DB_USER, DB_PASS, DB_PORT, DB_NAME } = process.env;
@@ -8,7 +7,6 @@ const ProductModel = require("./models/Product");
 const OrderModel = require("./models/Order");
 
 
-
 const sequelize = new Sequelize(
     `postgres://${DB_USER}:${DB_PASS}@${DB_PORT}/${DB_NAME}`,
     { logging: false }
@@ -16,7 +14,7 @@ const sequelize = new Sequelize(
 
 // con la autenticacion permito que los test corran de manera correcta
 
-const connectToDatabase = async () => {
+const connectToDataBase = async () => {
     try {
         await db.authenticate();
     } catch (error) {
@@ -27,9 +25,9 @@ const connectToDatabase = async () => {
 connectToDataBase();
 
 
-UsersModel(sequelize)
-ProductModel(sequelize)
-OrderModel(sequelize)
+UsersModel(sequelize);
+ProductModel(sequelize);
+OrderModel(sequelize);
 
 const {User, Order, Product} = sequelize.models;
 
@@ -38,11 +36,7 @@ Product.hasMany(Order, {timeStamps: false });
 Order.belongsTo(User, {timeStamps: false });
 Order.hasMany(Product, {timeStamps: false });
 
-
-
-
 module.exports = {
     ...sequelize.models,
     sequelize
-}
-
+};
