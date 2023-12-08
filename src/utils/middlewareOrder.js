@@ -31,15 +31,7 @@ const validateTotalOrderPost = (req, res, next) => {
     next();
 };
 
-const validateDeletedOrderPost = (req, res, next) => {
-    const { deleted } = req.body;
 
-    if (deleted == undefined) throw Error('Por favor envie el dato eliminado');
-
-    if (typeof deleted !== "boolean") throw Error('Por favor envie el tipo de dato correcto.');
-
-    next();
-};
 
 const validateUserIdGet = (req, res, next) => {
     const { UserId } = req.query;
@@ -70,7 +62,6 @@ module.exports = {
     validateAdressOrderPost,
     validateProductsOrderPost,
     validateTotalOrderPost,
-    validateDeletedOrderPost,
     validateUserIdGet,
     validateUserIdPost,
     validateIdPost

@@ -12,7 +12,6 @@ const {
     validateAdressOrderPost,
     validateProductsOrderPost,
     validateTotalOrderPost,
-    validateDeletedOrderPost,
     validateUserIdPost,
     validateIdPost
 } = require('../utils/middlewareOrder');

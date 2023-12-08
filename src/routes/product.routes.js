@@ -13,7 +13,6 @@ const {
     validatePriceProductPost,
     validateStockProductPost,
     validateImageProductPost,
-    validateDeletedProductPost,
     validateProductIdPost,
     validateProductImagePost
 } = require('../utils/middlewareProduct');
@@ -38,7 +37,6 @@ productRouter.put('/updateProduct', [
     validatePriceProductPost,
     validateStockProductPost,
     validateImageProductPost,
-    validateDeletedProductPost,
     validateProductImagePost,
     validateProductIdPost
 ], updateProductHandler);
