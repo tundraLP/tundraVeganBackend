@@ -25,12 +25,7 @@ const OrderFunc = (sequelize) => {
       total: {
         type: DataTypes.DECIMAL(10, 2),
         allowNull: false,
-      },
-      deleted: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-        defaultValue: false,
-      },
+      }
     },
     {
       timeStamps:false,
