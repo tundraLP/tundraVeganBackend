@@ -28,7 +28,6 @@ productRouter.post('/createProduct', [
     validatePriceProductPost,
     validateStockProductPost,
     validateImageProductPost,
-    validateDeletedProductPost,
     validateProductImagePost
 ], createProductHandler);
 
