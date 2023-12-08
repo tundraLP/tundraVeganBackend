@@ -20,6 +20,6 @@ const {
 orderRouter.get('/getAllOrders', getAllOrderHandler);
 orderRouter.get('/getOrdersById', validateUserIdGet, getOrdersByIdHandler);
 orderRouter.post('/createOrder', [validateStateOrderPost, validateAdressOrderPost, validateProductsOrderPost, validateTotalOrderPost, validateDeletedOrderPost, validateUserIdPost], createOrderHandler);
-orderRouter.delete('/deleteOrder', [validateUserIdPost, validateIdPost], deleteOrderHandler);
+orderRouter.delete('/deleteOrder', [validateIdPost], deleteOrderHandler);
 
 module.exports = orderRouter;
