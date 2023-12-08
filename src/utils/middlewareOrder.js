@@ -19,6 +19,10 @@ const validateProductsOrderPost = (req, res, next) => {
     const { products } = req.body;
 
     if (products.length == 0) throw Error('Por favor envie los productos que quiere ordenar.');
+    products.forEach(element => {
+        if (element.id == null || element.count == null || element.count == undefined)
+            throw Error('Por favor enviar los productos en una estrucura valida --> {id: UUID, count: INTEGER}');
+    });
 
     next();
 };
@@ -56,6 +60,8 @@ const validateIdPost = (req, res, next) => {
 
     next();
 };
+
+
 
 module.exports = {
     validateStateOrderPost,
