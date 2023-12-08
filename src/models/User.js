@@ -1,5 +1,7 @@
 const { DataTypes } = require('sequelize');
 
+const imageDefault = "https://res.cloudinary.com/da6d9ru3s/image/upload/v1685498460/Avatar-Profile-Vector-PNG-Pic_aobyn6.png";
+
 const UserFunc = (sequelize) => {
     sequelize.define('User', {
         id: {
@@ -36,10 +38,21 @@ const UserFunc = (sequelize) => {
                 isEmail: true,
             },
         },
+        image: {
+            type: DataTypes.TEXT,
+            allowNull: true,
+            defaultValue:
+              imageDefault, 
+            validate: {
+              isUrl: true,
+            },
+            public_id: String,
+          },
         password: {
             type: DataTypes.STRING,
             allowNull: false,
         },
+        
 
     }, { timestamps: false });
 };
