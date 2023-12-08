@@ -40,12 +40,7 @@ const ProductFunc = (sequelize) => {
           isUrl: true,
         },
         public_id: String,
-      },
-      deleted: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-        defaultValue: false,
-      },
+      }
     },
     {
       timeStamps:false,
