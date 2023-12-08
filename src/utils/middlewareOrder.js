@@ -20,7 +20,7 @@ const validateProductsOrderPost = (req, res, next) => {
 
     if (products.length == 0) throw Error('Por favor envie los productos que quiere ordenar.');
     products.forEach(element => {
-        if (element.id == null || element.count == null || element.count == undefined)
+        if (element.id == null || element.count == null || element.count == undefined || element.count == 0)
             throw Error('Por favor enviar los productos en una estrucura valida --> {id: UUID, count: INTEGER}');
     });
 
