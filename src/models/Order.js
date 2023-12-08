@@ -19,7 +19,16 @@ const OrderFunc = (sequelize) => {
         allowNull: false,
       },
       products: {
-        type: DataTypes.ARRAY(DataTypes.JSON),
+        type: DataTypes.ARRAY(DataTypes.JSON({
+          id: {
+            type: DataTypes.UUID,
+            allowNull: false,
+          },
+          count: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+          },
+        })),
         allowNull: false,
       },
       total: {
