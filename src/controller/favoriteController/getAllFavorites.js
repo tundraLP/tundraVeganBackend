@@ -1,8 +1,8 @@
 const {Favorite} = require('../../db');
 
-const getAllFavorite = async ()=>{
+const getAllFavorites = async ()=>{
     const favorites = await Favorite.findAll();
     return favorites;
 }
 
-module.exports = getAllFavorite;
+module.exports = getAllFavorites;
