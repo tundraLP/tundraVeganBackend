@@ -3,8 +3,8 @@ const { Order, Product } = require('../../db');
 
 const getAllOrder = async () => {
     const orders = await Order.findAll();
-    const mappedOrders = await Promise.all(orders.map(async (order)=>{ //Mappeando todas las ordenes
-        const  mappedProducts = await Promise.all(order.products.map(async (p)=>{ //Mappeando el array products    
+    const mappedOrders = await Promise.all(orders.map(async (order) => { //Mappeando todas las ordenes
+        const mappedProducts = await Promise.all(order.products.map(async (p) => { //Mappeando el array products    
             const productAux = await Product.findByPk(p.id);
             if (!productAux) throw Error(`Alguno de los productos no existen. {ID: ${p.id}}`);
             return {
