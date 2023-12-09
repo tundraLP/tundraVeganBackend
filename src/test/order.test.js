@@ -1,6 +1,6 @@
 const supertest = require('supertest');
 const { server, app } = require('../../index');
-const { db } = require('../db');
+const { sequelize } = require('../db');
 
 const api = supertest(server);
 
@@ -8,11 +8,11 @@ beforeAll(() => {
     console.log('Comienza los test de las ordenes.');
 });
 
-describe('Test para las ordenes', () => {
+xdescribe('Test para las ordenes', () => {
 
 });
 
 afterAll(async () => {
-    await db.close();
+    await sequelize.close();
     app.close();
 });
