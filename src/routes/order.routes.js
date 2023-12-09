@@ -17,7 +17,7 @@ const {
 } = require('../utils/middlewareOrder');
 
 orderRouter.get('/getAllOrders', getAllOrderHandler);
-orderRouter.get('/getOrdersById', validateUserIdGet, getOrdersByIdHandler);
+orderRouter.get('/getOrdersById', [validateUserIdGet], getOrdersByIdHandler);
 orderRouter.post('/createOrder', [validateStateOrderPost, validateAdressOrderPost, validateProductsOrderPost, validateTotalOrderPost, validateUserIdPost], createOrderHandler);
 orderRouter.delete('/deleteOrder', [validateIdPost], deleteOrderHandler);
 
