@@ -5,6 +5,7 @@ const { DB_USER, DB_PASS, DB_PORT, DB_NAME } = process.env;
 const UserFunc = require("./models/User");
 const ProductFunc = require("./models/Product");
 const OrderFunc = require("./models/Order");
+const FavoriteFunc = require('./models/Favorite');
 
 const sequelize = new Sequelize(
     `postgres://${DB_USER}:${DB_PASS}@${DB_PORT}/${DB_NAME}`,
@@ -28,11 +29,17 @@ connectToDataBase();
 UserFunc(sequelize);
 ProductFunc(sequelize);
 OrderFunc(sequelize);
+FavoriteFunc(sequelize);
 
-const { User, Order, Product } = sequelize.models;
+const { User, Order, Product, Favorite } = sequelize.models;
 
 User.hasMany(Order, { timeStamps: false });
 Order.belongsTo(User, { timeStamps: false });
+
+User.hasMany(Favorite);
+Favorite.belongsTo(User, {foreignKey: "UserId"});
+Favorite.belongsTo(Product, {foreignKey: "ProductId"});
+
 
 module.exports = {
     sequelize,
