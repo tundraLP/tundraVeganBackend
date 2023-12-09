@@ -22,9 +22,18 @@ const validateUserIdGet = (req, res, next) => {
     next();
 }
 
+const validateFavoriteId = (req, res, next) =>{
+    const { id } = req.body;
+
+    if (!id) throw Error('Por favor enviar ID de favorito a eliminar.');
+
+    next();
+}
+
 
 module.exports = {
     validateUserIdPost,
     validateProductIdPost,
     validateUserIdGet,
+    validateFavoriteId
 };

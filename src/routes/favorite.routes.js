@@ -9,7 +9,8 @@ const deleteFavoriteHandler = require('../handler/favoriteHandler/deleteFavorite
 const {
     validateProductIdPost,
     validateUserIdGet,
-    validateUserIdPost
+    validateUserIdPost,
+    validateFavoriteId
 } = require ('../utils/middlewareFavorite');
 
 
@@ -17,6 +18,6 @@ const {
 favoriteRouter.get('/getAllFavorites', getAllFavoritesHandler);
 favoriteRouter.get('/getFavoritesById', [validateUserIdGet], getFavoritesByIdHandler);
 favoriteRouter.post('/createFavorite', [validateProductIdPost, validateUserIdPost], createFavoriteHandler);
-favoriteRouter.delete('/deleteFavorite',[validateProductIdPost, validateUserIdPost], deleteFavoriteHandler);
+favoriteRouter.delete('/deleteFavorite',[validateFavoriteId], deleteFavoriteHandler);
 
 module.exports = favoriteRouter;
