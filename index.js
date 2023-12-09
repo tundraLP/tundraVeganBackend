@@ -8,7 +8,7 @@ const app = server.listen(PORT, async () => {
         await sequelize.sync({ force: false });
         console.log(`Listening on PORT ${PORT}`);
     } catch (error) {
-        console.log('Hubo un error', error);
+        console.log('Hubo un error al conectar la base de datos ', error);
     };
 });
 
