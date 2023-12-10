@@ -1,7 +1,5 @@
 const { DataTypes } = require("sequelize");
 
-const imageDefault = "https://res.cloudinary.com/da6d9ru3s/image/upload/v1685498460/Avatar-Profile-Vector-PNG-Pic_aobyn6.png";
-
 const ProductFunc = (sequelize) => {
   sequelize.define(
     "Product",
@@ -13,6 +11,7 @@ const ProductFunc = (sequelize) => {
       },
       name: {
         type: DataTypes.STRING,
+        unique: true,
         allowNull: false,
       },
       type: {
@@ -33,9 +32,8 @@ const ProductFunc = (sequelize) => {
       },
       image: {
         type: DataTypes.TEXT,
-        allowNull: true,
-        defaultValue:
-          imageDefault, 
+        allowNull: false,
+        unique: true,
         validate: {
           isUrl: true,
         },
