@@ -54,7 +54,7 @@ const UserFunc = (sequelize) => {
         },
         
 
-    }, { timestamps: false });
+    }, { paranoid: true });
 };
 
 module.exports = UserFunc;
