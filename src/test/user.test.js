@@ -23,12 +23,25 @@ const user = {
     adress: "Avenida 15 n°4193"
 };
 
+const fakeUser = {
+    name: "Blas",
+    lastName: "Casale",
+    password: "Contrafalse123.",
+    adress: "Avenida 15 n°4193"
+}
+
 describe('Test para las rutas de usuarios', () => {
 
     it('Solicitud tipo POST para la creación de un usuario y que sea retornado en formato JSON', async () => {
         await api.post('/user/createUser')
             .send(user)
             .expect('Content-Type', "application/json; charset=utf-8");
+    });
+
+    it('Solicitud tipo POST para la creación de un usuario sin la informacion necesaria', async () => {
+        await api.post('/user/createUser')
+            .send(fakeUser)
+            .expect('Content-Type', 'text/html; charset=utf-8');
     });
 
     it('Solicitud tipo GET de un usuario y que este debe ser retornado en formato JSON', async () => {
@@ -44,8 +57,14 @@ describe('Test para las rutas de usuarios', () => {
         expect(response.body).toHaveProperty('adress', user.adress);
     });
 
+    it('Solicitud tipo GET de un usuario sin el envio de la información necesaria', async () => {
+        await api.get(`/user/getUser?mail=${user.mail}&password=`)
+            .expect(500)
+            .expect('Content-Type', 'text/html; charset=utf-8');
+    });
+
     it('Solicitud tipo PUT de un usuario y que este debe ser retornado en formato JSON', async () => {
-        
+
         const update = {
             name: result.name,
             lastName: result.lastName,
@@ -61,11 +80,33 @@ describe('Test para las rutas de usuarios', () => {
             .expect('Content-Type', "application/json; charset=utf-8");
     });
 
+    it('Solicitud de tipo PUT de un usuario pero sin el envio de la informacion necesaria', async () => {
+        const update = {
+            name: result.name,
+            lastName: result.lastName,
+            mail: result.mail,
+            password: result.password,
+            adress: result.adress,
+        };
+
+        await api.put('/user/updateUser')
+            .send(update)
+            .expect(500)
+            .expect('Content-Type', 'application/json; charset=utf-8');
+    });
+
     it('Solicitud tipo DELETE de un usuario y que este debe ser retornado en formato JSON', async () => {
         await api.delete('/user/deleteUser')
             .send({ UserId: result.id })
             .expect(201)
             .expect('Content-Type', "application/json; charset=utf-8");
+    });
+
+    it('Solicitud tipo DELETE de un usuario pero sin el envio del UserId', async () => {
+        await api.delete('/user/deleteUser')
+            .send({ UserId: null })
+            .expect(500)
+            .expect('Content-Type', 'text/html; charset=utf-8');
     });
 });
 
