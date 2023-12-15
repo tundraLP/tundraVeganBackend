@@ -75,14 +75,6 @@ const validateProductIdPost = (req, res, next) => {
     next();
 };
 
-const validateProductImagePost = (req, res, next) => {
-    const { image } = req.body;
-
-    if (!image) throw Error('Por favor envie la imagen.');
-
-    next();
-}
-
 module.exports = {
     validateNameProductPost,
     validateTypeProductPost,
@@ -91,6 +83,5 @@ module.exports = {
     validateStockProductPost,
     validateImageProductPost,
     validateDeletedProductPost,
-    validateProductImagePost,
     validateProductIdPost
 };
