@@ -4,33 +4,34 @@ const { sequelize } = require('../db');
 
 const api = supertest(server);
 
-beforeAll(async () => {
-    try {
-        await sequelize.authenticate();
-        console.log('Comienzan los test de usuarios.');
-    } catch (error) {
-        console.log('Hubo un errro al levantar la base de datos en los test ', error);
-    };
-});
-
-let result;
-
-const user = {
-    name: "Blas",
-    lastName: "Casale",
-    mail: "truchomail@gmail.com",
-    password: "Contrafalse123.",
-    adress: "Avenida 15 n°4193"
-};
-
-const fakeUser = {
-    name: "Blas",
-    lastName: "Casale",
-    password: "Contrafalse123.",
-    adress: "Avenida 15 n°4193"
-}
 
 describe('Test para las rutas de usuarios', () => {
+
+    beforeAll(async () => {
+        try {
+            await sequelize.authenticate();
+            console.log('Comienzan los test de usuarios.');
+        } catch (error) {
+            console.log('Hubo un error al levantar la base de datos en los test ', error);
+        };
+    });
+
+    let result;
+
+    const user = {
+        name: "Blas",
+        lastName: "Casale",
+        mail: "truchomail@gmail.com",
+        password: "Contrafalse123.",
+        adress: "Avenida 15 n°4193"
+    };
+
+    const fakeUser = {
+        name: "Blas",
+        lastName: "Casale",
+        password: "Contrafalse123.",
+        adress: "Avenida 15 n°4193"
+    };
 
     it('Solicitud tipo POST para la creación de un usuario y que sea retornado en formato JSON', async () => {
         await api.post('/user/createUser')
@@ -61,6 +62,17 @@ describe('Test para las rutas de usuarios', () => {
         await api.get(`/user/getUser?mail=${user.mail}&password=`)
             .expect(500)
             .expect('Content-Type', 'text/html; charset=utf-8');
+    });
+
+    it('Solicitud tipo GET trayendo todos los usuarios para el admin', async () => {
+        const response = await api.get('/user/getUsersAdmin')
+            .expect(200)
+            .expect('Content-Type', "application/json; charset=utf-8");
+
+        console.log(response.body)
+
+        expect(response.body).toBeInstanceOf(Array);
+        expect(response.body.length > 10);
     });
 
     it('Solicitud tipo PUT de un usuario y que este debe ser retornado en formato JSON', async () => {
@@ -108,13 +120,13 @@ describe('Test para las rutas de usuarios', () => {
             .expect(500)
             .expect('Content-Type', 'text/html; charset=utf-8');
     });
-});
 
-afterAll(async () => {
-    try {
-        await sequelize.close();
-        await app.close();
-    } catch (error) {
-        console.log('Hubo un error al cerrar la base de datos ', error);
-    };
+    afterAll(async () => {
+        try {
+            await app.close();
+            await sequelize.close();
+        } catch (error) {
+            console.log('Hubo un error al cerrar la base de datos ', error);
+        };
+    });
 });
