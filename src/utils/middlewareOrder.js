@@ -61,6 +61,13 @@ const validateIdPost = (req, res, next) => {
     next();
 };
 
+const validateNewStatePut = (req, res, next) =>{
+    const {state} = req.body;
+
+    if (!state) throw Error(`Por favor enviar el nuevo estado de la orden.`);
+
+    next();
+}
 
 
 module.exports = {
@@ -70,5 +77,6 @@ module.exports = {
     validateTotalOrderPost,
     validateUserIdGet,
     validateUserIdPost,
-    validateIdPost
+    validateIdPost,
+    validateNewStatePut
 };
