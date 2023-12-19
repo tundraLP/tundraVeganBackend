@@ -1,6 +1,6 @@
 const getUsersAdmin = require("../../controller/userController/getUsersAdmin");
 
-const getUserHandlerAdminHandler = async (req, res) => {
+const getUserAdminHandler = async (req, res) => {
     try {
         const users = await getUsersAdmin();
         res.status(200).json(users);
@@ -9,4 +9,4 @@ const getUserHandlerAdminHandler = async (req, res) => {
     };
 };
 
-module.exports = getUserHandlerAdminHandler;
+module.exports = getUserAdminHandler;
