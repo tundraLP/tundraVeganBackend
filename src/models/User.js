@@ -52,7 +52,11 @@ const UserFunc = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        
+        type: {
+            type: DataTypes.STRING,
+            defaultValue: `User`,
+            allowNull: false,
+        }
 
     }, { paranoid: true });
 };
