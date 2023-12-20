@@ -26,6 +26,14 @@ describe('Test para las rutas de usuarios', () => {
         adress: "Avenida 15 n°4193"
     };
 
+    const user2 = {
+        name: "Blas",
+        lastName: "Casale",
+        mail: "truchito@gmail.com",
+        password: "Contrafalse123.",
+        adress: "Avenida 15 n°4193"
+    };
+
     const fakeUser = {
         name: "Blas",
         lastName: "Casale",
@@ -36,6 +44,12 @@ describe('Test para las rutas de usuarios', () => {
     it('Solicitud tipo POST para la creación de un usuario y que sea retornado en formato JSON', async () => {
         await api.post('/user/createUser')
             .send(user)
+            .expect('Content-Type', "application/json; charset=utf-8");
+    });
+
+    it('Solicitud tipo POST para la creación de un usuario y que sea retornado en formato JSON', async () => {
+        await api.post('/user/createUser')
+            .send(user2)
             .expect('Content-Type', "application/json; charset=utf-8");
     });
 
