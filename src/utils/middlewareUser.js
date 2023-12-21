@@ -97,6 +97,15 @@ const validateUserIdPost = (req, res, next) => {
     next();
 }
 
+const validateTypePut = (req, res, next) =>{
+    
+    const { type } = req.body;
+
+    if (!type) throw Error('Por favor enviar un tipo de usuario.');
+
+    next();
+}
+
 module.exports = {
     validateNameGet,
     validateNamePost,
@@ -107,5 +116,6 @@ module.exports = {
     validatePasswordGet,
     validatePasswordPost,
     validateAdressPost,
-    validateUserIdPost
+    validateUserIdPost,
+    validateTypePut,
 };
