@@ -6,7 +6,7 @@ const { sequelize } = require('./src/db');
 const app = server.listen(PORT, async () => {
     try {
         console.log(`Listening on PORT ${PORT}`);
-        await sequelize.sync({ force: false });
+        await sequelize.sync({ alter: false });
     } catch (error) {
         console.log('Hubo un error al conectar la base de datos ', error);
     };
