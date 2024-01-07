@@ -10,11 +10,9 @@ const validateNameProductPost = (req, res, next) => {
 };
 
 const validateTypeProductPost = (req, res, next) => {
-    const { type } = req.body;
+    const { Type } = req.body;
 
-    if (!type) throw Error('Por favor envie el tipo del producto.');
-
-    if (type.length < 3 && type.length > 30) throw Error('El tipo del producto no cumple con el formato esperado.');
+    if (!Type) throw Error('Por favor envie el tipo del producto.');
 
     next();
 };

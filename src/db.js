@@ -7,6 +7,7 @@ const ProductFunc = require("./models/Product");
 const OrderFunc = require("./models/Order");
 const FavoriteFunc = require('./models/Favorite');
 const ReviewFunc = require('./models/Review');
+const TypeFunc = require('./models/Type');
 
 const sequelize = new Sequelize(
     `postgres://${DB_USER}:${DB_PASS}@${DB_PORT}/${DB_NAME}`,
@@ -32,11 +33,17 @@ ProductFunc(sequelize);
 OrderFunc(sequelize);
 FavoriteFunc(sequelize);
 ReviewFunc(sequelize);
+TypeFunc(sequelize);
 
-const { User, Order, Product, Favorite, Review } = sequelize.models;
+const { User, Order, Product, Favorite, Review, Type } = sequelize.models;
 
 User.hasMany(Order, { timeStamps: false });
 Order.belongsTo(User, { timeStamps: false });
+
+
+//Product.belongsTo(Type, {as: 'type', foreignKey: "TypeId", timeStamps: false});
+Product.belongsTo(Type, { foreignKey: 'TypeId', timeStamps: false });
+Type.hasMany(Product, { foreignKey: 'TypeId', timeStamps: false });
 
 User.hasMany(Favorite);
 Favorite.belongsTo(User, {foreignKey: "UserId"});

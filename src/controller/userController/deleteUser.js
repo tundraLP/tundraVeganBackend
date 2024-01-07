@@ -11,9 +11,13 @@ const deleteUser = async (UserId) => {
 
     if (!user) throw Error('No existe un usuario con este ID, por favor envie un ID válido.');
 
-    const orders = await Order.findAll({ where: { UserId }, paranoid: false });
-    const favorites = await Favorite.findAll({ where: { UserId }, paranoid: false });
-    const reviews = await Review.findAll({ where: { UserId }, paranoid: false });
+    let = bool;
+    if (user.deletedAt == null) bool = true
+    else bool = false;
+
+    const orders = await Order.findAll({ where: { UserId }, paranoid: bool });
+    const favorites = await Favorite.findAll({ where: { UserId }, paranoid: bool });
+    const reviews = await Review.findAll({ where: { UserId }, paranoid: bool });
 
     const deletedFavorites = favorites.length > 0 ? await Promise.all(favorites.map(async (fav) => {
         if (fav?.dataValues?.deletedAt == null) await fav.destroy();
