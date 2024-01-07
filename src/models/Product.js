@@ -14,10 +14,6 @@ const ProductFunc = (sequelize) => {
         unique: true,
         allowNull: false,
       },
-      type: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
       description: {
         type: DataTypes.STRING,
         allowNull: false,
