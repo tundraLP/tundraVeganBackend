@@ -41,9 +41,9 @@ User.hasMany(Order, { timeStamps: false });
 Order.belongsTo(User, { timeStamps: false });
 
 
-//Product.belongsTo(Type, {as: 'type', foreignKey: "TypeId", timeStamps: false});
-Product.belongsTo(Type, { foreignKey: 'TypeId', timeStamps: false });
-Type.hasMany(Product, { foreignKey: 'TypeId', timeStamps: false });
+
+Product.belongsTo(Type, { foreignKey: 'TypeId', timestamps: false });
+Type.hasMany(Product, { foreignKey: 'TypeId', timestamps: false });
 
 User.hasMany(Favorite);
 Favorite.belongsTo(User, {foreignKey: "UserId"});

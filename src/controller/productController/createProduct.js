@@ -6,7 +6,6 @@ const createProduct = async (data) => {
     const typeAux = await Type.findOne({where: {name: type}});
 
     if (!typeAux) throw Error('No existe ese tipo de comida en la base de datos.');
-
     await product.setType(typeAux);
     
     const productAux = await Product.findOne({where: { id: product.id }, include: [{
