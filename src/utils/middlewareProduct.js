@@ -4,7 +4,7 @@ const validateNameProductPost = (req, res, next) => {
 
     if (!name) throw Error('Por favor enviar el nombre del producto');
 
-    if (name.length < 5 || name.length > 50) throw Error('El nombre enviado no cumple con el formato esperado.');
+    if (name.length < 5 || name.length > 300) throw Error('El nombre enviado no cumple con el formato esperado.');
 
     next();
 };
