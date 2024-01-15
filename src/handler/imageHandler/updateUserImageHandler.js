@@ -3,9 +3,9 @@ const updateUserImage = require('../../controller/imageController/updateUserImag
 const updateUserImageHandler = async (req, res) => {
     try {
         console.log(req.body);
-        const { image, UserId } = req.body;
+        const { image, UserId, name } = req.body;
         
-        const response = await updateUserImage(image, UserId);
+        const response = await updateUserImage(image, UserId, name);
 
 
         res.status(201).json(response);
