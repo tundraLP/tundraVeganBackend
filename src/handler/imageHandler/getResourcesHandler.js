@@ -2,7 +2,7 @@ const getResources = require('../../controller/imageController/getResources');
 
 const getResoucersHandler = async (req, res) => {
     try {
-        const {public_id} = req.query;
+        const { public_id } = req.query;
         const response = await getResources(public_id);
         res.status(200).json(response);
     } catch (error) {
