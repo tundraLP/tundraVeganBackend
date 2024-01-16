@@ -1,14 +1,17 @@
 const cloudinary = require('../../config/cloudinary');
 const { User } = require('../../db');
 
-const updateUserImage = async (image, UserId)=>{ //Update the image of the User trying to upload it to cloudinary.
+const updateUserImage = async ( image, UserId, name )=>{ //Update the image of the User trying to upload it to cloudinary.
     const user = await User.findByPk(UserId);
 
     if (!user) throw Error(`El usuario con ID = ${UserId}, no existe en la base de datos.`);
 
-    //Cargo la imagen
+    //Seteo la configuracion
     const folder = 'Users';
-    const response = await cloudinary.uploader.upload(image, { folder },
+    let public_id = '';
+    if (name)   public_id = name;
+    //Cargo la imagen
+    const response = await cloudinary.uploader.upload(image, { public_id, folder },
         (error, result)=> {
             if (error)  {
                 console.log(error);
