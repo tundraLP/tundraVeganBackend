@@ -16,7 +16,7 @@ imageRouter.post('/updateUserImage', [validateUserIdPost, validateImagePost], up
 
 imageRouter.post('/uploadImage', [validateImagePost, validateFolderPost], uploadImageHandler);
 
-imageRouter.get('/getResources', validatePublicIdGet, getResoucersHandler);
+imageRouter.get('/getResources', getResoucersHandler);
 
 
 
