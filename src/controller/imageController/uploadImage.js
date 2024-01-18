@@ -5,6 +5,16 @@ const uploadImage = async (image, folder, name)=> {
     let public_id = '';
     if (name)   public_id = name;
 
+    const aux = await cloudinary.api.resource(public_id, (error)=>{
+        if (error) {
+            console.log(`Este fue el error de cloudinary.`);
+            console.log(error);
+            throw Error(`Hubo un error buscando en la API de cloudinary un elemento con este public_id = ${public_id}.`);
+        }
+    });
+
+    if (aux) throw Error(`Ya existe un elemento en cloudinary con este public_id = ${public_id}.`);
+
     const response = await cloudinary.uploader.upload(image, { public_id, folder }, (error, result) => {
         if (error){
             console.log(`Error cargando imagen en cloudinary: ${error}`);
