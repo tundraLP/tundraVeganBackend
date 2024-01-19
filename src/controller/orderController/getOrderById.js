@@ -27,6 +27,7 @@ const getOrdersById = async (UserId) => {
             adress: order.dataValues.adress,
             products: mappedProducts,
             total: order.dataValues.total,
+            createdAt: order.dataValues.createdAt,
         };
         return aux;
     }));
