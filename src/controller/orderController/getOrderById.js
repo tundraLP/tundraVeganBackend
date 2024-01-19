@@ -6,7 +6,7 @@ const getOrdersById = async (UserId) => {
     const mappedOrders = await Promise.all(orders.map(async (order) => { //Mappeando todas las ordenes
         const mappedProducts = await Promise.all(order.products.map(async (p) => { //Mappeando el array products    
             const productAux = await Product.findByPk(p.id);
-            if (!productAux) throw Error(`Alguno de los productos no existen. {ID: ${p.id}}`);
+            if (!productAux) throw Error(`Alguno de los productos no existe. {ID: ${p.id}}`);
             return {
                 product: {
                     id: productAux.id,
@@ -15,7 +15,8 @@ const getOrdersById = async (UserId) => {
                     description: productAux.description,
                     price: productAux.price,
                     stock: productAux.stock,
-                    image: productAux.image
+                    image: productAux.image,
+                    createdAt: productAux.createdAt
                 },
                 count: p.count
             };
