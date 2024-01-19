@@ -1,9 +1,9 @@
 const cloudinary = require('../../config/cloudinary');
 
-const uploadImage = async (image, folder, name)=> {
+const uploadImage = async (image, folder, name) => {
 
     let public_id = '';
-    if (name)   public_id = name;
+    if (name) public_id = name;
 
     const aux = await cloudinary.api.resource(public_id, (error)=>{
         if (error) {
@@ -16,14 +16,14 @@ const uploadImage = async (image, folder, name)=> {
     if (aux) throw Error(`Ya existe un elemento en cloudinary con este public_id = ${public_id}.`);
 
     const response = await cloudinary.uploader.upload(image, { public_id, folder }, (error, result) => {
-        if (error){
+        if (error) {
             console.log(`Error cargando imagen en cloudinary: ${error}`);
             throw Error(`Hubo un error cargando la imagen en cloudinary.`);
         }
         return result;
     });
-    
+
     return response;
-}
+};
 
 module.exports = uploadImage;
