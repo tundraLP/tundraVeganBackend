@@ -16,7 +16,6 @@ const getOrdersById = async (UserId) => {
                     price: productAux.price,
                     stock: productAux.stock,
                     image: productAux.image,
-                    createdAt: productAux.createdAt
                 },
                 count: p.count
             };
