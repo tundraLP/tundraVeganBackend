@@ -5,7 +5,7 @@ const uploadImageHandler = require('../handler/imageHandler/uploadImageHandler')
 
 const imageRouter = Router();
 
-const { 
+const {
     validateImagePost,
     validateUserIdPost,
     validateFolderPost,
@@ -17,8 +17,5 @@ imageRouter.post('/updateUserImage', [validateUserIdPost, validateImagePost], up
 imageRouter.post('/uploadImage', [validateImagePost, validateFolderPost], uploadImageHandler);
 
 imageRouter.get('/getResources', validatePublicIdGet, getResoucersHandler);
-
-
-
 
 module.exports = imageRouter;
