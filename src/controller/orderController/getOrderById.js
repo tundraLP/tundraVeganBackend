@@ -30,6 +30,7 @@ const getOrdersById = async (UserId) => {
         };
         return aux;
     }));
+    mappedOrders.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
     return mappedOrders;
 };
