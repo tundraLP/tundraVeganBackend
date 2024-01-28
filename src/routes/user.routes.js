@@ -6,6 +6,7 @@ const getUserAdminHandler = require('../handler/userHandler/getUsersAdminHandler
 const createUserHandler = require('../handler/userHandler/createUserHandler');
 const updateUserHandler = require('../handler/userHandler/updateUserHandler');
 const deleteUserHandler = require('../handler/userHandler/deteleUserHandler');
+const isUserHandler = require('../handler/userHandler/isUserHandler');
 
 const {
     validateNameGet,
@@ -20,6 +21,8 @@ const {
     validateUserIdPost,
     validateTypePut
 } = require('../utils/middlewareUser');
+
+userRouter.get('/isUser', validateMailGet, isUserHandler);
 
 userRouter.get('/getUser', [validateMailGet, validatePasswordGet], getUserHandler);
 
