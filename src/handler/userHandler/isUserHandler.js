@@ -6,6 +6,7 @@ const isUserHandler = async (req, res) => {
         const response = await isUser(mail);
         res.status(200).json(response);
     } catch (error) {
+        console.log(error);
         res.status(404).json({error: error.message});
     }
 }
