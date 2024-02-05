@@ -10,6 +10,11 @@ const getProduct = async () => {
           exclude: ['TypeId'],
         },
       });
+      products.sort((a, b) => {
+        if (a.Type.name < b.Type.name) return -1;
+        if (b.Type.name < a.Type.name) return 1;
+        else return 0;
+      });
     return products;
 };
 
