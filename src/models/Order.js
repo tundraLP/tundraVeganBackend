@@ -34,7 +34,11 @@ const OrderFunc = (sequelize) => {
       total: {
         type: DataTypes.DECIMAL(10, 2),
         allowNull: false,
-      }
+      },
+      date: {
+        type: DataTypes.DATEONLY,
+        allowNull: false,
+    },
     },
     {
       timeStamps:false,
