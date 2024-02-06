@@ -30,6 +30,11 @@ const getAllOrder = async () => {
         };
         return aux;
     }));
+    mappedOrders.sort((a, b) => {
+        if (a.date > b.date) return -1;
+        if (b.date > a.date) return 1;
+        else return 0;
+      });
     return mappedOrders;
 };
 
