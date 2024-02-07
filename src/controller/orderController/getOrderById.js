@@ -23,6 +23,7 @@ const getOrdersById = async (UserId) => {
         const aux = {
             id: order.dataValues.id,
             state: order.dataValues.state,
+            date: order.dataValues.date,
             adress: order.dataValues.adress,
             products: mappedProducts,
             total: order.dataValues.total,
