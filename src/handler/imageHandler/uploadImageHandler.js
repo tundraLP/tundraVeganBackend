@@ -6,7 +6,7 @@ const uploadImageHandler = async (req, res) => {
         const response = await uploadImage(image, folder, name);
         res.status(201).json(response);
     } catch (error) {
-        res.status(500).json(error);
+        res.status(500).json({error: error.message});
     };
 };
 
