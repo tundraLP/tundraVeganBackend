@@ -4,7 +4,7 @@ const router = require('./routes/index');
 const morgan = require('morgan');
 
 server.use(morgan('dev'));
-server.use(express.json());
+server.use(express.json( { limit: '10mb' } ));
 server.use((req, res, next) => {
     console.log('peticion')
     console.log('req.body = ', req.body);

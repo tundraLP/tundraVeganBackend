@@ -6,7 +6,7 @@ const createProductHandler = async (req, res) => {
         const product = await createProduct({ name, type, description, price, stock, image });
         res.status(201).json(product);
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.status(500).send(error.message);
     };
 };
 
