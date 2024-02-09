@@ -19,7 +19,8 @@ const {
     validatePasswordGet,
     validatePasswordPost,
     validateUserIdPost,
-    validateTypePut
+    validateTypePut,
+    validateImagePut
 } = require('../utils/middlewareUser');
 
 userRouter.get('/isUser', validateMailGet, isUserHandler);
@@ -30,7 +31,7 @@ userRouter.get('/getUsersAdmin', getUserAdminHandler);
 
 userRouter.post('/createUser', [validateNamePost, validateLastNamePost, validateMailPost, validateAdressPost, validatePasswordPost], createUserHandler);
 
-userRouter.put('/updateUser', [validateNamePost, validateLastNamePost, validateMailPost, validateAdressPost, validatePasswordPost, validateTypePut], updateUserHandler);
+userRouter.put('/updateUser', [validateNamePost, validateLastNamePost, validateMailPost, validateAdressPost, validatePasswordPost, validateTypePut, validateImagePut], updateUserHandler);
 
 userRouter.delete('/deleteUser', validateUserIdPost, deleteUserHandler);
 
