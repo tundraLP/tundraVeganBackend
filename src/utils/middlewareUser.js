@@ -106,6 +106,15 @@ const validateTypePut = (req, res, next) =>{
     next();
 }
 
+const validateImagePut = (req, res, next) =>{
+    
+    const { image } = req.body;
+
+    if (!image) throw Error('Por favor enviar una imagen para el usuario.');
+
+    next();
+}
+
 module.exports = {
     validateNameGet,
     validateNamePost,
@@ -118,4 +127,5 @@ module.exports = {
     validateAdressPost,
     validateUserIdPost,
     validateTypePut,
+    validateImagePut,
 };
