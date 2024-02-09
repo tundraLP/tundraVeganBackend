@@ -6,13 +6,6 @@ const validateImagePost = (req, res, next) => {
     next();
 }
 
-const validateUserIdPost = (req, res, next) => {
-    const { UserId } = req.body;
-
-    if (!UserId) throw Error('Por favor enviar el ID de usuario a guardar la imagen.');
-
-    next();
-}
 
 const validateFolderPost = (req, res, next) => {
     const { folder } = req.body;
@@ -32,7 +25,6 @@ const validatePublicIdGet = (req, res, next) => {
 
 module.exports = {
     validateImagePost,
-    validateUserIdPost,
     validateFolderPost,
     validatePublicIdGet,
 };
