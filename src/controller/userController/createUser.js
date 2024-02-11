@@ -1,5 +1,4 @@
 const { User } = require('../../db');
-const updateUserImage = require('../imageController/updateUserImage');
 
 const createUser = async (data) => {
     const { name, lastName, mail, adress, password, image } = data;
