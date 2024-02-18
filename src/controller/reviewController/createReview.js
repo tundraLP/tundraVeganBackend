@@ -12,7 +12,6 @@ const createReview = async (UserId, ProductId, review, stars, clientName, date) 
             UserId,
             ProductId
         },
-        paranoid: false
     });
 
     if (existingReview) throw Error(`Esta reseña ya existe para el usuario y producto especificos. { UserID: ${UserId} ; ProductID: ${ProductId} }`);
