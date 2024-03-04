@@ -15,12 +15,17 @@ const createReview = async (UserId, ProductId, review, stars, clientName, date) 
     });
 
     if (existingReview) throw Error(`Esta reseña ya existe para el usuario y producto especificos. { UserID: ${UserId} ; ProductID: ${ProductId} }`);
-    const reviewAux = await Review.create({review, date, stars, clientName});
+    const reviewAux = await Review.create({ review, date, stars, clientName });
     await reviewAux.setUser(UserId);
     await reviewAux.setProduct(ProductId);
 
-    return reviewAux;
+    const reponse = {
+        ...reviewAux,
+        message: 'Reseña creada exitosamente.'
+    };
 
-}
+    return reponse;
+
+};
 
 module.exports = createReview;
