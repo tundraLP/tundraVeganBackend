@@ -10,6 +10,7 @@ const updateUser = async (data) => {
         type: aux.type,
         name: aux.name,
         lastName: aux.lastName,
+        message: 'Tipo de usuario actualizado'
     };
     return response;
 };
