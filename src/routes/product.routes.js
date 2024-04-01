@@ -29,12 +29,6 @@ productRouter.post('/createProduct', [
 ], createProductHandler);
 
 productRouter.put('/updateProduct', [
-    validateNameProductPost,
-    validateTypeProductPost,
-    validateDescriptionProductPost,
-    validatePriceProductPost,
-    validateStockProductPost,
-    validateImageProductPost,
     validateProductIdPost
 ], updateProductHandler);
 
