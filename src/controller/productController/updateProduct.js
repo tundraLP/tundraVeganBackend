@@ -2,8 +2,13 @@ const { Product, Type} = require('../../db');
 
 const updateProduct = async (data) => {
     const { name, type, description, price, stock, ProductId, image } = data;
+    
+    const typeAux = await Type.findOne({where: {name: type}});
+    if (!typeAux) throw Error(`No existe ese tipo de comida en la BDD.`);
+    const product = await Product.update({ name, description, price, stock, image }, { where: { id: ProductId } });
+    const productUpdated = await Product.findByPk(ProductId);
+    await productUpdated.setType(typeAux);
 
-    const product = await Product.update({ name, type, description, price, stock, image }, { where: { id: ProductId } });
 
     const aux = await Product.findByPk(ProductId, {
         include: [{
